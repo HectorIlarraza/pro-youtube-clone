@@ -1,5 +1,14 @@
+// React & React Routing-Dom
 import React, { Component } from 'react';
+import { Link } from "react-router-dom";
+
+// CSS
+import "./Sidebar.css";
+
+// Component
 import SidebarRow from './SidebarRow';
+
+// Material Icons
 import WhatshotIcon from "@material-ui/icons/Whatshot";
 import HomeIcon from "@material-ui/icons/Home";
 import SubscriptionsIcon from "@material-ui/icons/Subscriptions";
@@ -10,18 +19,20 @@ import WatchLaterIcon from "@material-ui/icons/WatchLater";
 import ThumbUpAltOutlinedIcon from "@material-ui/icons/ThumbDownAltOutlined";
 import ExpandMoreOutlinedIcon from "@material-ui/icons/ExpandMoreOutlined";
 import GroupsSharpIcon from '@material-ui/icons/GroupSharp';
-import AcUnitSharp from "@material-ui/icons/AcUnitSharp"
-
-import "./Sidebar.css";
+import HdrOffSharpIcon from "@material-ui/icons/HdrOffSharp";
 
 export default class Sidebar extends Component {
     render() {
         return (
             <div className="sidebar">
-                <SidebarRow selected Icon={HomeIcon} title="Home" />
-                <SidebarRow Icon={GroupsSharpIcon} title="Group" />
+                <Link to="/">
+                    <SidebarRow selected Icon={HomeIcon} title="Home" />
+                </Link>
+                <Link to="/about">
+                    <SidebarRow Icon={GroupsSharpIcon} title="About Us" />
+                </Link>
                 <a href='https://youtube-clone-34abc4.netlify.app/'>
-                <SidebarRow Icon={AcUnitSharp} title="MVP" />
+                    <SidebarRow Icon={HdrOffSharpIcon} title="MVP" />
                 </a>
                 <SidebarRow Icon={WhatshotIcon} title="Trending (Coming soon)" />
                 <SidebarRow Icon={SubscriptionsIcon} title="Subscription (Coming soon)" />

@@ -9,54 +9,49 @@ import Avatar from '@material-ui/core/Avatar';
 import { Link } from "react-router-dom";
 
 export default class Header extends Component {
-    constructor(){
-        super();
-        this.state = {
-            inputSearch: ""
-        }
-    }
 
-    handleInputSearch = (e) => {
-        this.setState({
-            inputSearch: e.target.value
-        })
+    handleData = (e) => {
+        e.preventDefault();
+        this.props.handleSubmit();
     }
 
     render() {
-        const { inputSearch } = this.state;
-        console.log(inputSearch)
+        const { userInput } = this.props;
         return (
             <div className="header">
                 <div className="header__left">
                     <MenuIcon />
                     <Link to="/">
                         <img 
-                            className="header__logo" 
-                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Logo_of_YouTube_%282015-2017%29.svg/1004px-Logo_of_YouTube_%282015-2017%29.svg.png"
-                            alt=""
+                        className="header__logo" 
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Logo_of_YouTube_%282015-2017%29.svg/1004px-Logo_of_YouTube_%282015-2017%29.svg.png"
+                        alt=""
+                        onClick={this.props.handleReset}
                         />
                     </Link>
                 </div>
 
-                <div className="header__input">
+                <form className="header__input" onSubmit={this.handleData}>
                     <input 
-                    onChange={this.handleInputSearch} 
-                    value={inputSearch} 
+                    onChange={this.props.handleSearchValue} 
+                    value={userInput} 
                     placeholder="Search" 
                     type="text" 
                     />
-                    <Link to={`/search/${inputSearch}`}>
-                        <SearchIcon className="header__inputButton"/>
+                    <Link to={`/search/${userInput}`}>
+                        <button type="submit">
+                            <SearchIcon className="header__inputButton" />
+                        </button>
                     </Link>
-                </div>
+                </form>
 
                 <div className="header__icons">
                     <VideoIcon className="header__icon" />
                     <AppsIcon className="header__icon"/>
                     <NotificationsIcon />
                     <Avatar 
-                        alt="Hector Ilarraza"
-                        src="https://yt3.ggpht.com/yti/APfAmoFOpw32pS6zh1w-1O2n0BnICLLPN0Xr4WoSCVr_=s88-c-k-c0x00ffffff-no-rj-mo"
+                    alt="Hector Ilarraza"
+                    src="https://yt3.ggpht.com/yti/APfAmoFOpw32pS6zh1w-1O2n0BnICLLPN0Xr4WoSCVr_=s88-c-k-c0x00ffffff-no-rj-mo"
                     />
                 </div>
             </div>

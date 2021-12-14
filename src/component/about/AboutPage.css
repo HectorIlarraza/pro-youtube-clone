@@ -1,0 +1,20 @@
+.about-team {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    background-color: rgb(231, 233, 235);
+}
+  
+h1 {
+    grid-column: 1/-1;
+    text-align: center;
+}
+  
+.teams-info {
+    background-color: rgb(231, 233, 235);
+    border: 1px solid rgb(231, 233, 235);
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 200px;
+    margin-left: 110px;  
+}
