@@ -1,6 +1,6 @@
 // React & React Routing-Dom
 import React, { Component } from 'react';
-import { Switch, Route, Link } from "react-router-dom";
+import { Switch, Route, Link, withRouter } from "react-router-dom";
 
 // CSS
 import './App.css';
@@ -12,7 +12,7 @@ import Sidebar from "./component/sidebar/Sidebar";
 import RecommendedVideos from './component/recommended-videos/RecommendedVideos';
 import SearchPage from './component/search/SearchPage';
 
-export default class App extends Component {
+class App extends Component {
   constructor(){
     super()
     this.state = {
@@ -33,9 +33,12 @@ export default class App extends Component {
     });
   }
     
-  handleSubmit = () => {
+  handleSubmit = (e) => {
+    e.preventDefault();
     const { userInput } = this.state;
+    console.log("pre-if")
     if(userInput !== ""){
+      console.log("Trigger")
       fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=${userInput}&type=video&key=${process.env.REACT_APP_API_KEY}`)
       .then((res)=>{
         return res.json();
@@ -46,16 +49,16 @@ export default class App extends Component {
           videoList: data.items,
         })
       });
+      this.props.history.push(`/search/${userInput}`)
     }
   }
 
   render(){
     const { userInput, videoList } = this.state;
     let videoElList = videoList.map((vid) => (
-      <Link to={`/videos/${vid.id.videoId}`}>
+      <Link to={`/videos/${vid.id.videoId}`} key={vid.id.videoId}>
           <div className='"videoRow'>
               <img
-                  key={vid.id.videoId}
                   src={vid.snippet.thumbnails.high.url}
                   alt="video-pic"
               />
@@ -108,3 +111,4 @@ export default class App extends Component {
     );
   }
 }
+export default withRouter(App);

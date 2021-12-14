@@ -10,11 +10,6 @@ import { Link } from "react-router-dom";
 
 export default class Header extends Component {
 
-    handleData = (e) => {
-        e.preventDefault();
-        this.props.handleSubmit();
-    }
-
     render() {
         const { userInput } = this.props;
         return (
@@ -31,18 +26,16 @@ export default class Header extends Component {
                     </Link>
                 </div>
 
-                <form className="header__input" onSubmit={this.handleData}>
+                <form className="header__input" onSubmit={this.props.handleSubmit}>
                     <input 
                     onChange={this.props.handleSearchValue} 
                     value={userInput} 
                     placeholder="Search" 
                     type="text" 
                     />
-                    <Link to={`/search/${userInput}`}>
-                        <button type="submit">
-                            <SearchIcon className="header__inputButton" />
-                        </button>
-                    </Link>
+                    <button type='submit'>
+                        <SearchIcon className="header__inputButton" />
+                    </button>
                 </form>
 
                 <div className="header__icons">
