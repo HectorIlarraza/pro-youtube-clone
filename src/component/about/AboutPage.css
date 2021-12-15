@@ -1,20 +1,46 @@
-.about-team {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    background-color: rgb(231, 233, 235);
-}
-  
 h1 {
     grid-column: 1/-1;
     text-align: center;
-}
+  }
   
-.teams-info {
-    background-color: rgb(231, 233, 235);
-    border: 1px solid rgb(231, 233, 235);
+  .teams-info {
     padding: 20px;
+    background-color: ;
+  }
+  
+  .team-info-container {
+    margin: 50px;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 200px;
-    margin-left: 110px;  
-}
+    padding-left: 70px;
+    padding-bottom: 40px;
+    padding-right: 50px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),  0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background-color: rgb(231, 233, 235);
+    grid-template-areas: 
+    "about-us bio bio";
+  }
+
+  .about-img {
+    border-radius: 50%;
+    border: 10px solid rgb(234, 235, 231);
+    outline: dotted 5px black;
+  }
+
+   .about-us {
+    grid-area: "about-us";
+  }
+
+  .bio {
+    grid-area: "bio";
+    margin-left: 100px;
+    margin-top: 100px;
+  }
+  
+  .about-name {
+    padding-left: 30px;
+  }
+
+  .about-title {
+    padding-left: 55px;
+  }

@@ -11,6 +11,7 @@ import AboutPage from './component/about/AboutPage';
 import Sidebar from "./component/sidebar/Sidebar";
 import RecommendedVideos from './component/recommended-videos/RecommendedVideos';
 import SearchPage from './component/search/SearchPage';
+import VideoPage from "./component/video/VideoPage";
 
 class App extends Component {
   constructor(){
@@ -56,7 +57,7 @@ class App extends Component {
   render(){
     const { userInput, videoList } = this.state;
     let videoElList = videoList.map((vid) => (
-      <Link to={`/videos/${vid.id.videoId}`} key={vid.id.videoId}>
+      <Link to={`/video/${vid.id.videoId}`} key={vid.id.videoId}>
           <div className='"videoRow'>
               <img
                   src={vid.snippet.thumbnails.high.url}
@@ -85,28 +86,23 @@ class App extends Component {
         handleSubmit={this.handleSubmit}
         handleReset={this.handleReset}
         />
-        <Switch>
-          <Route exact path="/about">
-            <div className="app__page">
-              <Sidebar />
+        <div className='app__page'>
+          <Sidebar />
+          <Switch>
+            <Route exact path="/about">
               <AboutPage />
-            </div>
-          </Route> 
-          <Route path="/search/:searchTerm">
-            <div className="app__page">
-              <Sidebar />
+            </Route> 
+            <Route path="/search/:searchTerm">
               <SearchPage 
               videoElList={videoElList} 
               />
-            </div>
-          </Route>
-          <Route exact path="/">
-            <div className="app__page">
-              <Sidebar />
+            </Route>
+            <Route exact path="/">
               <RecommendedVideos />
-            </div>
-          </Route> 
-        </Switch>
+            </Route>
+              <Route path="/video/:id" component={VideoPage} />
+          </Switch>
+        </div>
       </div>
     );
   }

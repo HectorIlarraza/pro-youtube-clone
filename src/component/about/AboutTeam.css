@@ -1,0 +1,32 @@
+/* .team-info {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-areas: "name bio bio"
+                       "title description description"
+                       "img description description"
+                       "url description description";
+}
+
+.about-name {
+  grid-area: "name";
+}
+
+.about-title {
+  grid-area: "title";
+}
+
+.about-img {
+  grid-area: "img";
+}
+
+.about-bio {
+  grid-area: "bio";
+}
+
+.about-description {
+  grid-area: "description";
+}
+
+.about-url {
+  grid-area: "url";
+} */
